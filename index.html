@@ -5,9 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
+    <!--CONTENEDOR ROJO-->
+
+    <div style="position: relative; display: inline-block;">
+
+        <!--CONTENEDOR ROJO PEQUEÑO-->
+
+    <div style="position: absolute; display: flex; width: 100%; align-items: center; padding: 20px;">
+        
+        <!--VIDA DEL JUGADOR -->
+
+        <div style="position: relative;height: 30px; width: 100%; display: flex; justify-content: flex-end;">
+            <div style="background-color: yellow; height: 30px; width: 100%;"
+            ></div>
+            <div id="vidaJugador" 
+            style="
+            position: absolute; 
+            background: blue; 
+            top: 0; 
+            right: 0; 
+            bottom: 0; 
+            width: 100%;
+            "
+            ></div>
+        </div>      
+        
+        <!--Cronometro-->
+
+    <div 
+    id="cronometro"
+    style="
+    background-color: red; 
+    width: 100px;
+     height: 100px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ">
+      10
+    </div>
+
+        <!--VIDA DEL ENEMIGO-->
+
+    <div style="position: relative;height: 30px; width: 100%;">
+        <div style="background-color: yellow; height: 30px;"
+        ></div>
+        <div id="vidaEnemigo" 
+        style="
+        position: absolute; 
+        background: blue; 
+        top: 0; 
+        right: 0; 
+        bottom: 0; 
+        left: 0;
+        "
+        ></div>
+    </div>
+    <div></div>
+    </div>
+    <div 
+    id="apareceTexto"
+    style="
+    position: absolute;
+     color: white; 
+     align-items: center; 
+     justify-content: center;
+     top: 0;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     display: none;
+     "
+     >EMPATE</div>
     <canvas id ="space" ></canvas>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
