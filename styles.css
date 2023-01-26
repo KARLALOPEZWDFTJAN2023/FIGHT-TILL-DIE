@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://i.pinimg.com/736x/fb/17/6b/fb176b147cd7ea973b6f7ebedca57cae--gif-gif-game-environment.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button{
+    padding: 15px 10px
+    ;
+    border-radius: 15px;
+    background-color: yellow;
+    width: 150px;
+    color: black;
+    font-size: 32px;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+button:hover{
+    background-color: greenyellow;
+    animation: bounce;
+}
+
+/*.gameOver{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://www.xtrafondos.com/descargar.php?id=10431&resolucion=5120x2880");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/

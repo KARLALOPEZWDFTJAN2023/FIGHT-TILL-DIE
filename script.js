@@ -6,67 +6,31 @@ canvas.height = 576
 
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+
 const gravedad = 0.7
 
-class Personajes{
-    constructor({posicion, velocidad, color = 'red', offset}){
-        this.posicion = posicion
-        this.velocidad = velocidad
-        this.width = 50
-        this.height = 150
-        this.ultKey
-        this.cajaGolpe = {
-            posicion:{
-                x: this.posicion.x,
-                y: this.posicion.y
-            },
-            offset: offset,
-            width :100,
-            height:50
-        }
-        this.color = color
-        this.estaAtacando
-        this.vida = 100
-        }
+const background = new Personajes({
+    posicion: {
+        x: 0,
+        y: 0
+    },
+    imageSrc: '../FIGHT-TILL-DIE/ASSETS/fondo2.jpeg',
+    escala : 1.85
+})
 
-dibujarse(){
-    ctx.fillStyle = this.color
-    ctx.fillRect(this.posicion.x, this.posicion.y, this.width, this.height)
-
-    //Donde se dibuja la caja de golpe
-    if(this.estaAtacando){   
-    ctx.fillStyle = 'green'
-    ctx.fillRect(this.cajaGolpe.posicion.x, 
-        this.cajaGolpe.posicion.y, 
-        this.cajaGolpe.width,
-         this.cajaGolpe.height
-         )
-    }
-}
+const dragon = new Personajes({
+    posicion: {
+        x: 550,
+        y: 50
+    },
+    imageSrc: '../FIGHT-TILL-DIE/ASSETS/rcjrbB6Li (1).gif',
+    escala: 0.6
+})
 
 
-update(){
-    this.dibujarse()
-    this.cajaGolpe.posicion.x = this.posicion.x + this.cajaGolpe.offset.x
-    this.cajaGolpe.posicion.y = this.posicion.y
-    this.posicion.x += this.velocidad.x
-    this.posicion.y += this.velocidad.y
-    if(this.posicion.y + this.height + this.velocidad.y >= canvas.height){
-        this.velocidad.y = 0
-    } else{
-        this.velocidad.y += gravedad
-    }
-}
 
-ataque(){
-    this.estaAtacando = true
-    setTimeout(() => {
-        this.estaAtacando = false
-    }, 100)
-}
-}
 
-const jugador = new Personajes({
+const jugador = new Peleadores({
    posicion: {
     x: 0,
     y: 0
@@ -84,7 +48,7 @@ const jugador = new Personajes({
 
 
 
-const enemigo = new Personajes({
+const enemigo = new Peleadores({
     posicion: {
      x: 400,
      y: 100
@@ -123,33 +87,6 @@ const keys = {
 
 }
 
-function colisionRectangular({  rectangulo1,  rectangulo2})
-{
-    return (  
-        rectangulo1.cajaGolpe.posicion.x + rectangulo1.cajaGolpe.width >= rectangulo2.posicion.x && 
-       rectangulo1.cajaGolpe.posicion.x <= rectangulo2.posicion.x + rectangulo2.width &&
-        rectangulo1.cajaGolpe.posicion.y + rectangulo1.cajaGolpe.height >= rectangulo2.posicion.y &&
-        rectangulo1.cajaGolpe.posicion.y <= rectangulo2.posicion.y + rectangulo2.height
-        )
-}
-let cronometro = 10
-function decrementoTiempo() {
-
-if(cronometro > 0){
-    setTimeout(decrementoTiempo, 1000)
-    cronometro--
-    document.getElementById('cronometro').innerHTML = cronometro
-}
-}
-if(cronometro === 0){
-
-    if(jugador.vida === enemigo.vida){
-    console.log('EMPATE')
-    
-    }
-}
-    
-    
 
 decrementoTiempo()
 
@@ -157,6 +94,8 @@ function animacion(){
     window.requestAnimationFrame(animacion)
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    background.update()
+    dragon.update()
     jugador.update()
     enemigo.update()
 
@@ -201,6 +140,11 @@ if(
     jugador.vida -= 20
     document.getElementById("vidaJugador").style.width = jugador.vida + '%'
 }
+//Terminar el juego  basado en la vida
+if(enemigo.vida <= 0 || jugador.vida <= 0 ){
+determinarGanador({jugador, enemigo, cronometroId})
+}
+
 
 }
 animacion()

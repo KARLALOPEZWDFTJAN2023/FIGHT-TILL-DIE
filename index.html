@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-    </style>
+    <title>FIGHT-TILL-DIE</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!--BOTONES-->
+    <button id="Start" >START</button>
     <!--CONTENEDOR ROJO-->
 
     <div style="position: relative; display: inline-block;">
@@ -28,7 +30,7 @@
             <div id="vidaJugador" 
             style="
             position: absolute; 
-            background: blue; 
+            background: green; 
             top: 0; 
             right: 0; 
             bottom: 0; 
@@ -61,7 +63,7 @@
         <div id="vidaEnemigo" 
         style="
         position: absolute; 
-        background: blue; 
+        background: green; 
         top: 0; 
         right: 0; 
         bottom: 0; 
@@ -71,23 +73,16 @@
     </div>
     <div></div>
     </div>
-    <div 
-    id="apareceTexto"
-    style="
-    position: absolute;
-     color: white; 
-     align-items: center; 
-     justify-content: center;
-     top: 0;
-     right: 0;
-     left: 0;
-     bottom: 0;
-     display: none;
-     "
-     >EMPATE</div>
+    <div id = "apareceTexto" style="position: absolute; color: white; align-items: center; justify-content: center; top: 0; right: 0; bottom: 0; left: 0; display: none;">EMPATE</div>
     <canvas id ="space" ></canvas>
+<!--- <div class="gameOver"> 
+        <a href=" / ">
+            <button> GGs </button>
+        </a>
+    </div>-->
 </div>
-
+<script src="../FIGHT-TILL-DIE/JS/utils.js"></script>
+<script src="../FIGHT-TILL-DIE/JS/clases.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
