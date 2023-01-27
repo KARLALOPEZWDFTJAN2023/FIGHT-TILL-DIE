@@ -1,36 +1,37 @@
-function colisionRectangular({  rectangulo1,  rectangulo2})
-{
-    return (  
-        rectangulo1.cajaGolpe.posicion.x + rectangulo1.cajaGolpe.width >= rectangulo2.posicion.x && 
-       rectangulo1.cajaGolpe.posicion.x <= rectangulo2.posicion.x + rectangulo2.width &&
-        rectangulo1.cajaGolpe.posicion.y + rectangulo1.cajaGolpe.height >= rectangulo2.posicion.y &&
-        rectangulo1.cajaGolpe.posicion.y <= rectangulo2.posicion.y + rectangulo2.height
-        )
-}
-
-function determinarGanador({jugador, enemigo, cronometroId}) {
-    clearTimeout(cronometroId)
-    document.querySelector('#apareceTexto').style.display = 'flex'
-    if(jugador.vida === enemigo.vida){
-    document.querySelector('#apareceTexto').innerHTML = 'Empate'     
-} else if (jugador.vida > enemigo.vida){
-    document.querySelector('#apareceTexto').innerHTML = 'Gana jugador 1'
-} else if (jugador.vida < enemigo.vida){
-    document.querySelector('#apareceTexto').innerHTML = 'Gana jugador 2'
-}
-}
-
-let cronometro = 10
-let cronometroId
-
-function decrementoTiempo() {
-if(cronometro > 0){
-   cronometroId = setTimeout(decrementoTiempo, 1000)
-    cronometro--
-    document.getElementById('cronometro').innerHTML = cronometro
-}
-
-if(cronometro === 0){
-    determinarGanador({jugador, enemigo, cronometroId})
-}
-}
+function rectangularCollision({ rectangle1, rectangle2 }) {
+    return (
+      rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
+        rectangle2.position.x &&
+      rectangle1.attackBox.position.x <=
+        rectangle2.position.x + rectangle2.width &&
+      rectangle1.attackBox.position.y + rectangle1.attackBox.height >=
+        rectangle2.position.y &&
+      rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height
+    )
+  }
+  
+  function determineWinner({ player, enemy, timerId }) {
+    clearTimeout(timerId)
+    document.querySelector('#displayText').style.display = 'flex'
+    if (player.health === enemy.health) {
+      document.querySelector('#displayText').innerHTML = 'EMPATE'
+    } else if (player.health > enemy.health) {
+      document.querySelector('#displayText').innerHTML = 'JUGADOR 1 GANA'
+    } else if (player.health < enemy.health) {
+      document.querySelector('#displayText').innerHTML = 'JUGADOR 2 GANA'
+    }
+  }
+  
+  let timer = 20
+  let timerId
+  function decreaseTimer() {
+    if (timer > 0) {
+      timerId = setTimeout(decreaseTimer, 1000)
+      timer--
+      document.querySelector('#timer').innerHTML = timer
+    }
+  
+    if (timer === 0) {
+      determineWinner({ player, enemy, timerId })
+    }
+  }
